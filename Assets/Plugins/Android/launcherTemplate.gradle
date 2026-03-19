@@ -20,8 +20,9 @@ android {
     }
 
     defaultConfig {
-        minSdk **MINSDKVERSION**
-        targetSdk **TARGETSDKVERSION**
+**DEFAULT_CONFIG_SETUP**
+        minSdk **MINSDK**
+        targetSdk **TARGETSDK**
         applicationId '**APPLICATIONID**'
         versionCode **VERSIONCODE**
         versionName '**VERSIONNAME**'
@@ -46,7 +47,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'**USER_PROGUARD**
             **SIGNCONFIG**
         }
-    }**PACKAGING_OPTIONS**
+    }**PACKAGING**
 
     bundle {
         language {
@@ -59,6 +60,6 @@ android {
             enableSplit = true
         }
     }
-}**REPOSITORIES****IL2CPP_BUILD_SETUP**
+}**REPOSITORIES**
 **SOURCE_BUILD_SETUP**
 **EXTERNAL_SOURCES**

@@ -62,6 +62,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'**USER_PROGUARD**
         }
     }**PACKAGING**
-}**REPOSITORIES****IL2CPP_BUILD_SETUP**
+}**REPOSITORIES**
 **SOURCE_BUILD_SETUP**
 **EXTERNAL_SOURCES**
