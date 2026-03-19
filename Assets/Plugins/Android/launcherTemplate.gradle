@@ -1,24 +1,16 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
+apply from: 'setupSymbols.gradle'
 apply from: '../shared/keepUnitySymbols.gradle'
 **APPLY_PLUGINS**
 
-configurations.all {
-    resolutionStrategy {
-        force 'org.jetbrains.kotlin:kotlin-stdlib:1.9.24'
-        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.24'
-        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.24'
-    }
-}
-
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.24'
+    implementation project(':unityLibrary')
 **DEPS**}
 
 android {
     ndkPath "**NDKPATH**"
     ndkVersion "**NDKVERSION**"
-    namespace 'com.unity3d.player'
+    namespace 'com.unity3d.player.launcher'
     compileSdk **APIVERSION**
     buildToolsVersion '**BUILDTOOLS**'
 
@@ -31,17 +23,9 @@ android {
 **DEFAULT_CONFIG_SETUP**
         minSdk **MINSDK**
         targetSdk **TARGETSDK**
-        ndk {
-            debugSymbolLevel **DEBUGSYMBOLLEVEL**
-            abiFilters **ABIFILTERS**
-        }
+        applicationId '**APPLICATIONID**'
         versionCode **VERSIONCODE**
         versionName '**VERSIONNAME**'
-        consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD**
-    }
-
-    lint {
-        abortOnError false
     }
 
     androidResources {
@@ -54,14 +38,28 @@ android {
             minifyEnabled **MINIFY_DEBUG**
             
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'**USER_PROGUARD**
+            signingConfig signingConfigs.debug
             jniDebuggable true
         }
         release {
             minifyEnabled **MINIFY_RELEASE**
             
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'**USER_PROGUARD**
+            **SIGNCONFIG**
         }
     }**PACKAGING**
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = false
+        }
+        abi {
+            enableSplit = true
+        }
+    }
 }**REPOSITORIES**
 **SOURCE_BUILD_SETUP**
 **EXTERNAL_SOURCES**
